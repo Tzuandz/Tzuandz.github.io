@@ -8,7 +8,7 @@
         <link rel="shortcut icon" href="https://i.ibb.co/rGMn65d/boss.webp" type="image/x-icon">
         <meta name="description" content="Hi my name is Tzuan / A freelance / web developer / vexer">
         <meta name="keywords" content="Tzuan,web Tzuan,Tzuan,Tzuan,Tzuan,Xuanvp,Tzuan home,profile Tzuan">
-        <link rel="canonical" href="https://xuanvnpro.github.io/">
+        <link rel="canonical" href="https://tzuandz.github.io/">
         <meta content="TzuanVp" name="author">
         <meta property="og:type" content="website">
         <meta content="#FCFCFD" name="theme-color">
@@ -341,7 +341,7 @@
                                             document.getElementById("year").innerHTML = new Date().getFullYear();
                                         </script>
                                     </samp>
-                                    <a href="/">xuanvnpro.github.io/</a>
+                                    <a href="/">tzuandz.github.io/</a>
                                     . All Rights Reserved.
                                 </p>
                             </div>
@@ -360,73 +360,6 @@
         <script src="./assets/js/libs/jquery-3.7.1.min.js"></script>
         <script src="./assets/js/libs/fuiToast.min.js"></script>
         <script src="./assets/js/libs/fancybox.umd.js"></script>
-        <script src="xuanvnpro.github.io/"></script>
+        <script src="tzuandz.github.io/"></script>
         <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js" data-pace-options='{"restartOnRequestAfter":false,"eventLag":false}'></script>
-        <script src="./assets/js/index.js?v=3.8"></script>
-
-        <audio id="bgmusic" preload="auto"></audio>
-<script>
-(function () {
-  const MUSIC_FILES = [
-    "assets/audio/Anh vui.mp3",
-    "assets/audio/thap drill tu do.mp3",
-    "assets/audio/Đóa phù dung cuối cùng x thap drill tu do.mp3",
-    "assets/audio/Tinh vệ.mp3",
-    "assets/audio/Lao tâm khổ tứ.mp3",
-    "assets/audio/Vạn sự tùy duyên.mp3"
-  ];
-
-  const pickRandom = () => MUSIC_FILES[Math.floor(Math.random() * MUSIC_FILES.length)];
-  const fileTitle = p => decodeURIComponent(p.split('/').pop()).replace(/\.[^/.]+$/, '');
-  const enc = p => encodeURI(p);
-
-  const hidePrompt = () => {
-    const p = document.getElementById('toast-prompt');
-    if (p) { p.style.display = 'none'; p.remove(); }
-  };
-
-  document.body.addEventListener('click', async (ev) => {
-    const btn = ev.target.closest('.confirm-btn');
-    if (!btn) return;
-    ev.preventDefault();
-
-    const audio = document.getElementById('bgmusic');
-    if (!audio) return;
-
-    audio.preload = 'auto';
-    audio.muted = false;
-    audio.volume = 1.0;
-
-    let current = pickRandom();
-    audio.src = enc(current);
-
-    audio.onended = async () => {
-      current = pickRandom();
-      audio.removeAttribute('src');
-      audio.load();
-      audio.src = enc(current);
-      try {
-        await audio.play();
-        window.FuiToast?.success?.(`Đang phát: ${fileTitle(current)}`);
-      } catch (e) {
-        window.FuiToast?.error?.('Không thể phát bài tiếp theo: ' + e.message);
-      }
-    };
-
-    try {
-      await audio.play();
-      window.FuiToast?.success?.(`Đang phát: ${fileTitle(current)}`);
-      hidePrompt();
-    } catch (e) {
-      window.FuiToast?.error?.('Không thể phát nhạc: ' + e.message);
-    }
-  }, { capture: true });
-
-  document.body.addEventListener('click', (ev) => {
-    const btn = ev.target.closest('.close-btn');
-    if (!btn) return;
-    ev.preventDefault();
-    hidePrompt();
-  }, { capture: true });
-})();
-</script>
+        <script src="./assets/js/index.js?v=3.8"></script>       
