@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('random-token-btn');
   const out = document.getElementById('random-token-display');
   const copyBtn = document.getElementById('copy-token-btn');
-  const FILE_URL = './random.txt';
+  const FILE_URL = new URL('assets/TK/random.txt', document.baseURI).href;
 
   let all = [];
   let bag = [];
