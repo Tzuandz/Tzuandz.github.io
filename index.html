@@ -381,4 +381,73 @@
 
         <script src="./assets/js/index.js?v=3.8"></script>       
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('random-token-btn');
+  const out = document.getElementById('random-token-display');
+  const copyBtn = document.getElementById('copy-token-btn');
+  const FILE_URL = './random.txt';
 
+  let all = [];
+  let bag = [];
+
+  function shuffle(a){
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+
+  function refillBag(){ bag = shuffle(all.slice()); }
+
+  async function loadTokens(){
+    const res = await fetch(FILE_URL + '?t=' + Date.now());
+    if(!res.ok) throw new Error('random.txt not found');
+    const txt = await res.text();
+    all = txt.split(/\r?\n/)
+             .map(s => s.replace(/^\uFEFF/, '').trim())
+             .filter(s => s && !s.startsWith('#'));
+    if(!all.length) throw new Error('random.txt empty');
+    refillBag();
+  }
+
+  async function pick(){
+    try{
+      if(!all.length) await loadTokens();
+      if(!bag.length) refillBag();
+      out.textContent = bag.pop();
+    }catch(e){
+      out.textContent = 'Lỗi: ' + (e && e.message ? e.message : 'Không đọc được random.txt');
+      console.error(e);
+    }
+  }
+
+  async function copyText(){
+    const text = out.textContent.trim();
+    if(!text || text === 'Nhấn Random') return;
+    try{
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const old = copyBtn.textContent; copyBtn.textContent = 'Đã sao chép';
+      setTimeout(()=> copyBtn.textContent = old, 1200);
+    }catch{
+      const old = copyBtn.textContent; copyBtn.textContent = 'Lỗi sao chép';
+      setTimeout(()=> copyBtn.textContent = old, 1200);
+    }
+  }
+
+  btn && btn.addEventListener('click', pick);
+  copyBtn && copyBtn.addEventListener('click', copyText);
+});
+</script>
+</body>
+</html>
