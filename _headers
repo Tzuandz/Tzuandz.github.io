@@ -1,0 +1,5 @@
+/*
+  Accept-CH: Sec-CH-UA, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version, Sec-CH-UA-Model, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Mobile
+  Critical-CH: Sec-CH-UA, Sec-CH-UA-Platform, Sec-CH-UA-Model
+  Permissions-Policy: ch-ua=*, ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version-list=*, ch-ua-mobile=*, ch-ua-model=*, ch-ua-platform=*, ch-ua-platform-version=*
+  Vary: Sec-CH-UA, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version, Sec-CH-UA-Model, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Mobile
